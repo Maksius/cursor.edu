@@ -25,10 +25,10 @@ console.log(getTotalTaxes.call(latvia));
 
 // task#4
 function getMySalary(country) {
-  const salary = Math.floor(1500 + Math.random() * (2000 + 1 -1500));
-  const taxes = Number((salary * this.tax).toFixed(0));
-  const profit = salary - taxes;
   setInterval(() => {
+    const salary = Math.floor(1500 + Math.random() * (2000 + 1 -1500));
+    const taxes = Number((salary * this.tax).toFixed(0));
+    const profit = salary - taxes;
     console.log({salary, taxes, profit});
   }, 10000);
 };
