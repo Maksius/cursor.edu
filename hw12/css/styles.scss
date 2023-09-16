@@ -1,0 +1,78 @@
+@import url('../fonts/eighty/stylesheet.css');
+@import url('../fonts/sw/styles.css');
+:root {
+  --font: 'Eighty Starlight', sans-serif;
+  --white: whitesmoke;
+  --lightblue: cornflowerblue;
+  --darkblue: dodgerblue;
+  --lightred: indianred;
+  --darkred: orangered;
+  --lightgreen: #65bf0e;
+  --darkgreen: limegreen;
+}
+
+body {font-family: var(--font); font-weight: 400; color: var(--white); background: center / cover no-repeat url(../images/img-bg1.jpg) fixed; min-height: 100vh;}
+
+button, input {font-size: 1.25rem; padding: .5rem; border-radius: .25rem; border: 3px solid var(--lightblue); background-color: var(--lightblue); box-shadow: 0 0 10px var(--darkblue); outline: none; width: 150px; transition: all 0.3s ease; -webkit-transition: all 0.25s ease; font-family: var(--font); color: var(--white); cursor: pointer;}
+
+button{
+  &:hover {outline: none; border: 3px solid var(--lightgreen); background-color: var(--lightgreen); box-shadow: 0 0 10px var(--darkgreen);}
+  &:active {border: 3px solid var(--darkblue); background-color: var(--darkblue); box-shadow: 0 0 10px var(--lightblue);}
+}
+
+#set-episode {
+  display: flex; justify-content: center; align-items: center; gap: 1rem; padding-top: 2rem;
+  input {
+    padding: .5rem 1rem;
+    &::-webkit-input-placeholder {text-align: center;}
+    &::-moz-placeholder {text-align: center;}
+    &:-ms-input-placeholder {text-align: center;}
+    &:out-of-range {outline: none; border: 3px solid var(--lightred); background-color: var(--lightred); box-shadow: 0 0 10px var(--darkred);}
+    &:focus {outline: none; border: 3px solid var(--lightgreen); background-color: var(--lightgreen); box-shadow: 0 0 10px var(--darkgreen);} 
+  }
+}
+
+h2 {font-size: 3rem; font-weight: 700; text-align: center; flex: 0 0 auto; width: 100%;}
+
+.characters-list {
+  display: flex; flex-wrap: wrap; justify-content: space-evenly; gap: 1.5rem 1rem; margin-bottom: 3rem;
+  .character {
+    width: 350px; flex: 0 0 350px; cursor: pointer; position: relative; box-shadow: none; transition: box-shadow .3s ease-in-out .1s;
+    .image, .back {width: 100%; padding-top: 100%; backface-visibility: hidden; transition: transform .3s ease-in-out; border-radius: .25rem; overflow: hidden;}
+    .image {
+      transform: perspective(600px) rotateY(0deg); position: relative;
+      img {width: 100%; height: 100%; position: absolute; top: 0; left: 0; object-fit: cover; object-position: top;}
+    }
+    .back {
+      transform: perspective(600px) rotateY(180deg); position: absolute; top: 0; left: 0;
+      .desc {
+        width: 100%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: flex; flex-direction: column; align-items: center; gap: 1rem; font-size: 1.25rem;
+        .name {font-size: 1.5rem; font-weight: 600;}
+        i {font-size: 3rem;}
+      }
+    }
+    &.male {
+      box-shadow: 0 0 15px var(--lightblue);
+      .back {background-color: var(--lightblue);}
+    }
+    &.female {
+      box-shadow: 0 0 15px var(--lightred);
+      .back {background-color: var(--lightred);}
+    }
+    &.alien {
+      box-shadow: 0 0 15px var(--lightgreen);
+      .back {background-color: var(--lightgreen);}
+    }
+    &:hover {
+      // &.male {box-shadow: 0 0 10px var(--lightblue);}
+      // &.female {box-shadow: 0 0 10px var(--lightred);}
+      // &.alien {box-shadow: 0 0 10px var(--lightgreen);}  
+      .image {transform: perspective(600px) rotateY(-180deg);}
+      .back {transform: perspective(600px) rotateY(0deg);}
+    }
+  }
+}
+
+#set-planets {display: flex; justify-content: center; align-items: center; gap: 1rem; margin-bottom: 2rem;}
+
+#planets-list {padding: 0; list-style: none; display: flex; flex-direction: column; align-items: center; row-gap: 1rem; font-size: 1.5rem; font-weight: 600; text-transform: capitalize; letter-spacing: 0.03em; color: var(--darkred);}
